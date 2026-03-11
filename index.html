@@ -2,92 +2,103 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  <meta name="description" content="ClarityFinance – منصة مالية ذكية للشركات الصغيرة والمتوسطة">
-  <meta name="theme-color" content="#2A6048">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <title>كلاريتي فايننس – وضوح مالي فوري</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كلاريتي فايننس</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    .screen {
+      display: none;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .active {
+      display: block;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #2A6048;
+      margin-bottom: 30px;
+    }
+    
+    button {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      background: #2A6048;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    button:hover {
+      background: #1e4e38;
+    }
+    
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-  <div class="app-container">
-    <!-- شاشة تسجيل الدخول -->
-    <section class="screen screen--active" id="login-screen" data-screen="login">
-      <header class="app-bar">
-        <div class="brand">
-          <h1 class="brand__logo">Clarity<em>Finance</em></h1>
-        </div>
-        <div class="app-bar__actions">
-          <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
-            <svg class="icon" viewBox="0 0 24 24" width="20" height="20">
-              <use href="#icon-moon"></use>
-            </svg>
-          </button>
-          <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">EN</button>
-        </div>
-      </header>
-
-      <main class="page page--centered">
-        <div class="hero-section">
-          <div class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 40 40">
-              <polyline points="6,24 14,15 21,20 32,9" stroke="white" stroke-width="3" fill="none"/>
-              <polyline points="25,9 32,9 32,16" stroke="white" stroke-width="3" fill="none"/>
-            </svg>
-          </div>
-          <h2 class="display-large" data-i18n="hero.title">وضوح مالي حقيقي</h2>
-          <p class="body-small" data-i18n="hero.subtitle">من بيانات خام إلى قرارات واضحة · أقل من 5 دقائق</p>
-        </div>
-
-        <article class="card">
-          <h3 class="title-medium" data-i18n="login.title">تسجيل الدخول</h3>
-          
-          <div class="field">
-            <label for="login-email" data-i18n="login.email">البريد الإلكتروني</label>
-            <input type="email" id="login-email" placeholder="name@company.sa" autocomplete="email">
-          </div>
-
-          <div class="field">
-            <label for="login-password" data-i18n="login.password">كلمة المرور</label>
-            <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
-          </div>
-
-          <button class="btn btn--primary btn--full" id="login-btn" data-i18n="login.signin">دخول</button>
-
-          <div class="divider" data-i18n="login.or">أو</div>
-
-          <button class="btn btn--ghost btn--full" id="try-btn" data-i18n="login.try">تجربة بدون حساب</button>
-        </article>
-
-        <p class="footnote" data-i18n="login.security">بياناتك مشفرة ومحمية · لن نشاركها مع أي جهة</p>
-      </main>
-    </section>
-
-    <!-- باقي الشاشات ستضاف بنفس النمط -->
-    <!-- upload, validation, mapping, processing, dashboard, insights, duediligence, reports -->
-
-    <!-- Icons Sprite (مخفي) -->
-    <svg style="display:none">
-      <defs>
-        <symbol id="icon-moon" viewBox="0 0 24 24">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </symbol>
-        <symbol id="icon-sun" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="5"/>
-          <line x1="12" y1="1" x2="12" y2="3"/>
-          <line x1="12" y1="21" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-          <line x1="1" y1="12" x2="3" y2="12"/>
-          <line x1="21" y1="12" x2="23" y2="12"/>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-        </symbol>
-      </defs>
-    </svg>
+  <!-- شاشة تسجيل الدخول -->
+  <div id="login-screen" class="screen active">
+    <h1>كلاريتي فايننس</h1>
+    <input type="email" placeholder="البريد الإلكتروني">
+    <input type="password" placeholder="كلمة المرور">
+    <button onclick="showScreen('upload-screen')">دخول</button>
+    <button onclick="showScreen('upload-screen')">تجربة بدون حساب</button>
   </div>
-  <script type="module" src="script.js"></script>
+
+  <!-- شاشة رفع الملف -->
+  <div id="upload-screen" class="screen">
+    <h1>رفع الملف المالي</h1>
+    <p>Excel أو CSV</p>
+    <button onclick="showScreen('dashboard-screen')">تحليل البيانات</button>
+    <button onclick="showScreen('login-screen')">رجوع</button>
+  </div>
+
+  <!-- شاشة لوحة التحكم -->
+  <div id="dashboard-screen" class="screen">
+    <h1>لوحة التحكم</h1>
+    <p>النتائج المالية</p>
+    <button onclick="showScreen('login-screen')">خروج</button>
+  </div>
+
+  <script>
+    function showScreen(screenId) {
+      // إخفاء جميع الشاشات
+      document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.remove('active');
+      });
+      
+      // إظهار الشاشة المطلوبة
+      document.getElementById(screenId).classList.add('active');
+    }
+  </script>
 </body>
 </html>
