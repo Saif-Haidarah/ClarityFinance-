@@ -2041,8 +2041,187 @@
       <button class="nav-item" data-screen="reports" onclick="showScreen('reports')"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span data-ar="تقاريري" data-en="Reports">تقاريري</span><div class="nav-pip"></div></button>
     </nav>
   </div>
+<!-- ============================================
+     SCREEN 3: VALIDATION (التحقق من البيانات)
+     ============================================ -->
+<div class="screen has-nav" id="s-validation">
 
-  <!-- Screens 3–9 are omitted for brevity in this preview, but in final version they'll be included exactly as in v7.1 with fixes and enhancements -->
+  <div class="topbar">
+    <div class="brand">
+      <button class="back-btn" onclick="showScreen('upload')">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      Clarity<em>Finance</em>
+    </div>
+    <div class="topbar-actions">
+      <button class="icon-btn" onclick="toggleTheme()"><span class="theme-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+      <button class="txt-btn lang-toggle" onclick="toggleLang()">EN</button>
+      <button class="power-btn" onclick="showScreen('login')" title="تسجيل الخروج / Logout">
+        <svg viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <div class="step-dots anim-1">
+      <div class="step-dot done"></div>
+      <div class="step-dot done"></div>
+      <div class="step-dot active"></div>
+      <div class="step-dot"></div>
+      <div class="step-dot"></div>
+    </div>
+
+    <!-- Processing animation -->
+    <div id="val-processing" style="text-align:center; padding:40px 0 30px" class="anim-1">
+      <div class="spinner" style="margin: 0 auto 20px"></div>
+      <div class="t-h2" data-ar="جارٍ التحقق من البيانات..." data-en="Validating data...">جارٍ التحقق من البيانات...</div>
+      <div class="t-small" style="margin-top:6px" data-ar="فحص الأعمدة والقيم والتنسيق" data-en="Checking columns, values and format">فحص الأعمدة والقيم والتنسيق</div>
+      <div style="max-width:280px; margin:28px auto 0; display:flex; flex-direction:column; gap:10px; text-align:right" id="val-steps">
+        <div class="val-step" data-ar="قراءة الملف..." data-en="Reading file...">قراءة الملف...</div>
+        <div class="val-step" data-ar="فحص الأعمدة الأساسية..." data-en="Checking required columns...">فحص الأعمدة الأساسية...</div>
+        <div class="val-step" data-ar="كشف القيم الفارغة..." data-en="Detecting empty values...">كشف القيم الفارغة...</div>
+        <div class="val-step" data-ar="التحقق من تنسيق الأرقام..." data-en="Verifying number format...">التحقق من تنسيق الأرقام...</div>
+      </div>
+    </div>
+
+    <!-- Success state (hidden initially) -->
+    <div id="val-success" style="display:none" class="anim-1">
+      <div style="text-align:center; padding:30px 0 20px">
+        <div style="width:64px; height:64px; border-radius:50%; background:var(--green-3); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:28px">✓</div>
+        <div class="t-h2" data-ar="البيانات صحيحة ✓" data-en="Data is valid ✓">البيانات صحيحة ✓</div>
+        <div class="t-small" style="margin-top:6px" data-ar="تم فحص 248 سطراً — لا أخطاء" data-en="Checked 248 rows — no errors">تم فحص 248 سطراً — لا أخطاء</div>
+      </div>
+      <div class="card card-sm" style="margin-bottom:12px">
+        <div class="t-h3" style="margin-bottom:10px" data-ar="ملخص الملف" data-en="FILE SUMMARY">ملخص الملف</div>
+        <div style="display:flex; flex-direction:column; gap:8px">
+          <div style="display:flex; justify-content:space-between; font-size:13px">
+            <span style="color:var(--muted)" data-ar="عدد الأسطر" data-en="Rows">عدد الأسطر</span>
+            <span style="font-weight:700; color:var(--ink)">248</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px">
+            <span style="color:var(--muted)" data-ar="الأعمدة المكتشفة" data-en="Columns detected">الأعمدة المكتشفة</span>
+            <span style="font-weight:700; color:var(--ink)">Account, Amount, Date</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px">
+            <span style="color:var(--muted)" data-ar="الفترة الزمنية" data-en="Period">الفترة الزمنية</span>
+            <span style="font-weight:700; color:var(--ink)">يناير — مارس 2025</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px">
+            <span style="color:var(--muted)" data-ar="الأخطاء" data-en="Errors">الأخطاء</span>
+            <span class="badge badge-green" data-ar="لا أخطاء" data-en="None">لا أخطاء</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="showScreen('mapping')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <span data-ar="المتابعة للتصنيف" data-en="Continue to Mapping">المتابعة للتصنيف</span>
+      </button>
+    </div>
+
+    <!-- Error state (hidden initially) -->
+    <div id="val-error" style="display:none" class="anim-1">
+      <div style="text-align:center; padding:30px 0 20px">
+        <div style="width:64px; height:64px; border-radius:50%; background:var(--red-2); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:28px">✗</div>
+        <div class="t-h2" data-ar="يوجد خطأ في البيانات" data-en="Data errors found">يوجد خطأ في البيانات</div>
+        <div class="t-small" style="margin-top:6px" data-ar="صحح الأخطاء وأعد الرفع" data-en="Fix the errors and re-upload">صحح الأخطاء وأعد الرفع</div>
+      </div>
+      <div class="alert alert-red" style="margin-bottom:8px">
+        <span class="alert-icon">⚠️</span>
+        <div>
+          <div class="alert-title" data-ar="عمود Amount مفقود في السطر 23" data-en="Column 'Amount' missing in row 23">عمود Amount مفقود في السطر 23</div>
+          <div class="alert-body" data-ar="تأكد من وجود قيمة رقمية في هذا العمود" data-en="Make sure this column has a numeric value">تأكد من وجود قيمة رقمية في هذا العمود</div>
+        </div>
+      </div>
+      <div class="alert alert-amber">
+        <span class="alert-icon">⚠️</span>
+        <div>
+          <div class="alert-title" data-ar="5 خلايا فارغة في عمود Account" data-en="5 empty cells in Account column">5 خلايا فارغة في عمود Account</div>
+          <div class="alert-body" data-ar="الأسطر: 45، 67، 89، 102، 134" data-en="Rows: 45, 67, 89, 102, 134">الأسطر: 45، 67، 89، 102، 134</div>
+        </div>
+      </div>
+      <button class="btn btn-outline btn-full" style="margin-top:16px" onclick="showScreen('upload')">
+        <span data-ar="↩ إعادة الرفع" data-en="↩ Re-upload">↩ إعادة الرفع</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <button class="nav-item" data-screen="dashboard" onclick="showScreen('dashboard')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span data-ar="الرئيسية" data-en="Home">الرئيسية</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="upload" onclick="showScreen('upload')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span data-ar="رفع" data-en="Upload">رفع</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="reports" onclick="showScreen('reports')"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span data-ar="تقاريري" data-en="Reports">تقاريري</span><div class="nav-pip"></div></button>
+  </nav>
+
+</div>
+
+<!-- ============================================
+     SCREEN 4: PROCESSING (المعالجة)
+     ============================================ -->
+<div class="screen" id="s-processing">
+
+  <div class="topbar">
+    <div class="brand">
+      <button class="back-btn" onclick="showScreen('mapping')">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      Clarity<em>Finance</em>
+    </div>
+    <div class="topbar-actions">
+      <button class="icon-btn" onclick="toggleTheme()"><span class="theme-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+      <button class="power-btn" onclick="showScreen('login')" title="تسجيل الخروج / Logout">
+        <svg viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="min-height:calc(100dvh - var(--topbar-h)); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; text-align:center;">
+
+    <!-- Ring spinner -->
+    <div style="position:relative; width:88px; height:88px; margin-bottom:28px;" class="anim-1">
+      <svg viewBox="0 0 88 88" style="width:88px;height:88px;transform:rotate(-90deg)">
+        <circle cx="44" cy="44" r="36" fill="none" stroke="var(--border)" stroke-width="5"/>
+        <circle id="proc-ring" cx="44" cy="44" r="36" fill="none" stroke="var(--green)" stroke-width="5"
+          stroke-linecap="round"
+          stroke-dasharray="226"
+          stroke-dashoffset="226"
+          style="transition:stroke-dashoffset .6s cubic-bezier(.4,0,.2,1)"/>
+      </svg>
+      <div id="proc-pct" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:17px;font-weight:700;color:var(--ink)">0%</div>
+    </div>
+
+    <div class="t-h2 anim-2" data-ar="جارٍ التحليل..." data-en="Analyzing...">جارٍ التحليل...</div>
+    <div class="t-small anim-2" style="margin-top:6px; max-width:220px" data-ar="النظام يحسب المؤشرات ويولد الرؤى" data-en="Calculating metrics and generating insights">النظام يحسب المؤشرات ويولد الرؤى</div>
+
+    <!-- Steps list -->
+    <div style="width:100%; max-width:300px; margin-top:32px;" class="anim-3" id="proc-list">
+
+      <div class="proc-step" style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border);">
+        <div class="proc-dot" style="width:24px;height:24px;border-radius:50%;border:2px solid var(--border-2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--muted);flex-shrink:0;transition:all .3s">1</div>
+        <span style="font-size:13px;color:var(--muted);transition:color .3s" data-ar="حساب الإيرادات والمصاريف" data-en="Calculating revenue and expenses">حساب الإيرادات والمصاريف</span>
+      </div>
+
+      <div class="proc-step" style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border);">
+        <div class="proc-dot" style="width:24px;height:24px;border-radius:50%;border:2px solid var(--border-2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--muted);flex-shrink:0;transition:all .3s">2</div>
+        <span style="font-size:13px;color:var(--muted);transition:color .3s" data-ar="حساب السيولة والـ Runway" data-en="Calculating cash and runway">حساب السيولة والـ Runway</span>
+      </div>
+
+      <div class="proc-step" style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border);">
+        <div class="proc-dot" style="width:24px;height:24px;border-radius:50%;border:2px solid var(--border-2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--muted);flex-shrink:0;transition:all .3s">3</div>
+        <span style="font-size:13px;color:var(--muted);transition:color .3s" data-ar="حساب درجة الصحة المالية" data-en="Computing health score">حساب درجة الصحة المالية</span>
+      </div>
+
+      <div class="proc-step" style="display:flex; align-items:center; gap:12px; padding:10px 0;">
+        <div class="proc-dot" style="width:24px;height:24px;border-radius:50%;border:2px solid var(--border-2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--muted);flex-shrink:0;transition:all .3s">4</div>
+        <span style="font-size:13px;color:var(--muted);transition:color .3s" data-ar="تحليل التنبيهات والمخاطر" data-en="Analyzing alerts and risks">تحليل التنبيهات والمخاطر</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
   <!-- JavaScript: All logic, fixes, enhancements -->
   <script>
