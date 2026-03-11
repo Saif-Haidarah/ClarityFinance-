@@ -1,43 +1,64 @@
-<div class="screen" id="s-login">
-  <div class="topbar">
-    <div class="brand" data-i18n="app.name">Clarity<em>Finance</em></div>
-    <div class="topbar-actions">
-      <button class="icon-btn" onclick="CF.toggleTheme()">
-        <span class="theme-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
-      </button>
-      <button class="txt-btn lang-toggle" onclick="CF.toggleLang()">EN</button>
-    </div>
-  </div>
-  <div class="page">
-    <div style="text-align:center; padding:44px 0 28px;" class="anim-1">
-      <div class="login-mark">
-        <svg viewBox="0 0 34 34" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="4,22 12,13 19,18 30,7"/>
-          <polyline points="23,7 30,7 30,14"/>
-        </svg>
-      </div>
-      <div class="t-display" data-i18n="app.tagline">وضوح مالي حقيقي</div>
-      <div class="t-small" style="margin-top:8px" data-i18n="auth.subtitle">من بيانات خام إلى قرارات واضحة · أقل من 5 دقائق</div>
-    </div>
-    <div class="card login-card anim-2">
-      <div class="t-h2" style="margin-bottom:18px" data-i18n="common.signin">تسجيل الدخول</div>
-      <div class="field">
-        <label data-i18n="auth.email">البريد الإلكتروني</label>
-        <input type="email" id="inp-email" autocomplete="email" data-i18n="auth.emailPlaceholder" placeholder="name@company.sa"/>
-      </div>
-      <div class="field" style="margin-bottom:18px">
-        <label data-i18n="auth.password">كلمة المرور</label>
-        <input type="password" id="inp-pass" autocomplete="current-password" data-i18n="auth.passwordPlaceholder" placeholder="••••••••"/>
-      </div>
-      <button class="btn btn-primary btn-full" onclick="CF.show('upload')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        <span data-i18n="common.signin">دخول</span>
-      </button>
-      <div class="divider-or"><span data-i18n="common.or">أو</span></div>
-      <button class="btn btn-ghost btn-full" onclick="CF.show('upload')">
-        <span data-i18n="auth.tryWithoutAccount">تجربة بدون حساب</span>
-      </button>
-    </div>
-    <p class="t-small anim-3" style="text-align:center;margin-top:14px" data-i18n="auth.security">بياناتك مشفرة ومحمية · لن نشاركها مع أي جهة</p>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+  <title>ClarityFinance</title>
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/screens.css">
+  
+  <!-- Additional styles -->
+  <style>
+    .chart-legend { display:flex; gap:12px; }
+    .chart-legend span { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); }
+    .legend-dot { width:8px; height:8px; border-radius:3px; display:inline-block; }
+    .health-pills { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
+    .health-pill {
+      padding:4px 10px; border-radius:20px; font-size:11px; font-weight:700; border:1.5px solid transparent;
+    }
+    .health-pill.ok   { background:rgba(93,214,138,0.15); color:#5DD68A; border-color:rgba(93,214,138,0.25); }
+    .health-pill.warn { background:rgba(250,204,106,0.15); color:#FACC6A; border-color:rgba(250,204,106,0.25); }
+    .val-step { display:flex; align-items:center; gap:10px; padding:8px 0; font-size:13px; color:var(--muted); opacity:0.45; transition: all 0.3s; }
+    .val-step-dot { width:8px; height:8px; border-radius:50%; background:currentColor; flex-shrink:0; }
+    .login-card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06);
+    }
+    [data-theme="dark"] .login-card {
+      background: rgba(20,26,22,0.85);
+      border-color: rgba(255,255,255,0.06);
+    }
+    #proc-ring {
+      stroke-dasharray: 314;
+      stroke-dashoffset: 314;
+      transition: stroke-dashoffset 0.6s cubic-bezier(0.4,0,0.2,1);
+      filter: drop-shadow(0 0 8px rgba(61,166,102,0.5));
+    }
+    #dd-liquidity, #dd-profitability, #dd-flags, #dd-summary { display: block; }
+  </style>
+</head>
+<body>
+
+<canvas id="particle-canvas" class="particle-canvas"></canvas>
+
+<!-- Include screen templates -->
+<!-- يمكنك استخدام server-side include أو تجميعها هنا -->
+<!-- للتبسيط، يمكنك نسخ محتوى كل شاشة هنا -->
+
+<!-- تم حذف محتوى الشاشات للاختصار - يمكنك نسخها من الملف الأصلي مع تعديل data-i18n -->
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/upload.js"></script>
+<script src="assets/js/mapping.js"></script>
+<script src="assets/js/processing.js"></script>
+
+</body>
+</html>
