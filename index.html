@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -1596,3 +1595,1194 @@ a { text-decoration: none; color: inherit; }
 
     <div class="t-h2 anim-2" data-ar="جارٍ التحليل..." data-en="Analyzing...">جارٍ التحليل...</div>
     <div class="t-small anim-2" style="margin-top:6px; max-width:220px" data-ar="النظام يحسب المؤشرات ويولد الرؤى" data-en="Calculating metrics and generating insights">النظام يحسب المؤشرات ويولد الرؤى</div>
+
+    <!-- Steps list -->
+    <div style="width:100%; max-width:300px; margin-top:32px;" class="anim-3" id="proc-list">
+
+      <div class="proc-step" style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border);">
+        <div class="proc-dot" style="width:24px;height:24px;border-radius:50%;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--muted);flex-shrink:0;transition:all .3s">1</div>
+        <span style="font-size:13px;color:var(--muted);transition:color .3s" data-ar="حساب الإيرادات والمصاريف" data-en="Calculating revenue and expenses">حساب الإيرادات والمصاريف</span>
+      </div>
+
+      <div class="proc-step" style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border);">
+        <div class="proc-dot" style="width:24px;height:24px;border-radius:50%;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--muted);flex-shrink:0;transition:all .3s">2</div>
+        <span style="font-size:13px;color:var(--muted);transition:color .3s" data-ar="حساب السيولة والـ Runway" data-en="Calculating cash and runway">حساب السيولة والـ Runway</span>
+      </div>
+
+      <div class="proc-step" style="display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border);">
+        <div class="proc-dot" style="width:24px;height:24px;border-radius:50%;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--muted);flex-shrink:0;transition:all .3s">3</div>
+        <span style="font-size:13px;color:var(--muted);transition:color .3s" data-ar="حساب درجة الصحة المالية" data-en="Computing health score">حساب درجة الصحة المالية</span>
+      </div>
+
+      <div class="proc-step" style="display:flex; align-items:center; gap:12px; padding:10px 0;">
+        <div class="proc-dot" style="width:24px;height:24px;border-radius:50%;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--muted);flex-shrink:0;transition:all .3s">4</div>
+        <span style="font-size:13px;color:var(--muted);transition:color .3s" data-ar="تحليل التنبيهات والمخاطر" data-en="Analyzing alerts and risks">تحليل التنبيهات والمخاطر</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN 6: DASHBOARD
+     ═══════════════════════════════════════════ -->
+<div class="screen has-nav" id="s-dashboard">
+
+  <div class="topbar">
+    <div class="brand">Clarity<em>Finance</em></div>
+    <div class="topbar-actions">
+      <button class="icon-btn" onclick="CF.toggleTheme()"><span class="theme-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+      <button class="txt-btn lang-toggle" onclick="CF.toggleLang()">EN</button>
+      <button class="txt-btn btn-primary" style="background:var(--green); color:white; border:none" onclick="CF.show('upload')" data-ar="رفع جديد" data-en="New Upload">رفع جديد</button>
+    
+      <button class="power-btn" onclick="CF.show('login')" title="تسجيل الخروج / Logout">
+        <svg viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="page page-wide">
+
+    <!-- Health Score -->
+    <div class="health-card anim-1">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; position:relative; z-index:1">
+        <div>
+          <div class="health-eyebrow" data-ar="درجة الصحة المالية" data-en="FINANCIAL HEALTH SCORE">درجة الصحة المالية</div>
+          <div class="health-score">76</div>
+          <div class="health-status" data-ar="جيد · تحسّن 4 نقاط هذا الشهر" data-en="Good · Improved 4pts this month">جيد · تحسّن 4 نقاط هذا الشهر</div>
+        </div>
+        <div style="text-align:center; opacity:.55; font-size:11px; font-weight:600">
+          <div>Q1 2025</div>
+          <div style="font-size:28px; margin-top:2px">📊</div>
+        </div>
+      </div>
+      <div class="health-pills" style="position:relative; z-index:1">
+        <span class="health-pill ok"   data-ar="الربحية ✓"   data-en="Profitability ✓">الربحية ✓</span>
+        <span class="health-pill ok"   data-ar="السيولة ✓"   data-en="Liquidity ✓">السيولة ✓</span>
+        <span class="health-pill warn" data-ar="المصاريف ⚠"  data-en="Expenses ⚠">المصاريف ⚠</span>
+        <span class="health-pill ok"   data-ar="النمو ✓"     data-en="Growth ✓">النمو ✓</span>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpi-grid anim-2" style="margin-bottom:12px">
+      <div class="kpi kpi-green">
+        <div class="kpi-label" data-ar="الإيرادات" data-en="REVENUE">الإيرادات</div>
+        <div class="kpi-value">42.8M</div>
+        <div class="kpi-sub" data-ar="ريال سعودي" data-en="SAR">ريال سعودي</div>
+        <div class="kpi-delta up">↑ 12.5%</div>
+      </div>
+      <div class="kpi kpi-red">
+        <div class="kpi-label" data-ar="المصاريف" data-en="EXPENSES">المصاريف</div>
+        <div class="kpi-value">34.5M</div>
+        <div class="kpi-sub" data-ar="ريال سعودي" data-en="SAR">ريال سعودي</div>
+        <div class="kpi-delta down">↑ 3.8%</div>
+      </div>
+      <div class="kpi kpi-blue">
+        <div class="kpi-label" data-ar="صافي الربح" data-en="NET PROFIT">صافي الربح</div>
+        <div class="kpi-value">8.3M</div>
+        <div class="kpi-sub" data-ar="هامش 19.4%" data-en="Margin 19.4%">هامش 19.4%</div>
+        <div class="kpi-delta up">↑ 8.2%</div>
+      </div>
+      <div class="kpi kpi-amber">
+        <div class="kpi-label" data-ar="الـ Runway" data-en="RUNWAY">الـ Runway</div>
+        <div class="kpi-value">7.2</div>
+        <div class="kpi-sub" data-ar="شهر" data-en="months">شهر</div>
+        <div class="kpi-delta up" data-ar="آمن ✓" data-en="Safe ✓">آمن ✓</div>
+      </div>
+    </div>
+
+    <!-- Alerts -->
+    <div class="anim-3" style="margin-bottom:12px">
+      <div class="section-head" style="margin-bottom:8px">
+        <div class="t-h3" data-ar="التنبيهات" data-en="ALERTS">التنبيهات</div>
+      </div>
+      <div class="alert alert-amber">
+        <span class="alert-icon">⚠️</span>
+        <div>
+          <div class="alert-title" data-ar="ارتفاع غير عادي في المصاريف" data-en="Unusual expense increase">ارتفاع غير عادي في المصاريف</div>
+          <div class="alert-body" data-ar="المصاريف الإدارية ارتفعت 31% — تجاوزت الحد المعتاد" data-en="Admin expenses up 31% — exceeds normal threshold">المصاريف الإدارية ارتفعت 31% — تجاوزت الحد المعتاد</div>
+        </div>
+      </div>
+      <div class="alert alert-green">
+        <span class="alert-icon">📈</span>
+        <div>
+          <div class="alert-title" data-ar="نمو قوي في الإيرادات" data-en="Strong revenue growth">نمو قوي في الإيرادات</div>
+          <div class="alert-body" data-ar="الإيرادات نمت 12.5% — أعلى من المتوسط الشهري" data-en="Revenue grew 12.5% — above monthly average">الإيرادات نمت 12.5% — أعلى من المتوسط الشهري</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insights -->
+    <div class="ai-card anim-4">
+      <div class="ai-icon">✨</div>
+      <div>
+        <div class="ai-eyebrow" data-ar="رؤية مالية" data-en="FINANCIAL INSIGHT">رؤية مالية</div>
+        <div class="ai-text" data-ar="المصاريف الإدارية ارتفعت 31% هذا الربع بسبب عقد إيجار جديد. الإيرادات في نمو قوي. تقليص المصاريف الثابتة سيرفع هامش الربح 3-4 نقاط." data-en="Admin expenses rose 31% this quarter due to a new lease. Revenue is growing strongly. Reducing fixed costs would improve profit margin by 3-4 points.">المصاريف الإدارية ارتفعت 31% هذا الربع بسبب عقد إيجار جديد. الإيرادات في نمو قوي. تقليص المصاريف الثابتة سيرفع هامش الربح 3-4 نقاط.</div>
+        <button class="btn btn-outline btn-sm" style="margin-top:10px" onclick="CF.show('insights')" data-ar="عرض التوصيات ←" data-en="View recommendations →">عرض التوصيات ←</button>
+      </div>
+    </div>
+
+    <!-- Revenue vs Expenses Chart -->
+    <div class="chart-card anim-5">
+      <div class="chart-head">
+        <div class="t-h2" data-ar="الإيرادات مقابل المصاريف" data-en="Revenue vs Expenses">الإيرادات مقابل المصاريف</div>
+        <div class="chart-legend">
+          <span><span class="legend-dot" style="background:var(--green2)"></span><span data-ar="إيرادات" data-en="Revenue">إيرادات</span></span>
+          <span><span class="legend-dot" style="background:var(--red)"></span><span data-ar="مصاريف" data-en="Expenses">مصاريف</span></span>
+        </div>
+      </div>
+      <!-- Bar chart: 6 months, clean and readable -->
+      <svg class="chart-svg" viewBox="0 0 320 140" style="height:140px">
+        <!-- Y-axis labels -->
+        <text class="chart-label" x="315" y="18"  text-anchor="end">50M</text>
+        <text class="chart-label" x="315" y="55"  text-anchor="end">35M</text>
+        <text class="chart-label" x="315" y="92"  text-anchor="end">20M</text>
+        <text class="chart-label" x="315" y="125" text-anchor="end">0</text>
+        <!-- Grid lines -->
+        <line class="chart-grid-line" x1="0" y1="15"  x2="300" y2="15"/>
+        <line class="chart-grid-line" x1="0" y1="52"  x2="300" y2="52"/>
+        <line class="chart-grid-line" x1="0" y1="89"  x2="300" y2="89"/>
+        <line class="chart-grid-line" x1="0" y1="122" x2="300" y2="122"/>
+        <!-- Month: أكتوبر -->
+        <rect class="chart-bar-rev" x="5"  y="82" width="18" height="40" rx="3"/>
+        <rect class="chart-bar-exp" x="25" y="89" width="18" height="33" rx="3"/>
+        <text class="chart-label" x="24"  y="136" text-anchor="middle">أكت</text>
+        <!-- نوفمبر -->
+        <rect class="chart-bar-rev" x="55"  y="72" width="18" height="50" rx="3"/>
+        <rect class="chart-bar-exp" x="75"  y="82" width="18" height="40" rx="3"/>
+        <text class="chart-label" x="74"  y="136" text-anchor="middle">نوف</text>
+        <!-- ديسمبر -->
+        <rect class="chart-bar-rev" x="105" y="60" width="18" height="62" rx="3"/>
+        <rect class="chart-bar-exp" x="125" y="74" width="18" height="48" rx="3"/>
+        <text class="chart-label" x="124" y="136" text-anchor="middle">ديس</text>
+        <!-- يناير -->
+        <rect class="chart-bar-rev" x="155" y="52" width="18" height="70" rx="3"/>
+        <rect class="chart-bar-exp" x="175" y="68" width="18" height="54" rx="3"/>
+        <text class="chart-label" x="174" y="136" text-anchor="middle">يناير</text>
+        <!-- فبراير -->
+        <rect class="chart-bar-rev" x="205" y="44" width="18" height="78" rx="3"/>
+        <rect class="chart-bar-exp" x="225" y="62" width="18" height="60" rx="3"/>
+        <text class="chart-label" x="224" y="136" text-anchor="middle">فبر</text>
+        <!-- مارس -->
+        <rect class="chart-bar-rev" x="255" y="32" width="18" height="90" rx="3"/>
+        <rect class="chart-bar-exp" x="275" y="55" width="18" height="67" rx="3"/>
+        <text class="chart-label" x="274" y="136" text-anchor="middle">مارس</text>
+      </svg>
+    </div>
+
+    <!-- Expense Breakdown Chart -->
+    <div class="chart-card anim-6">
+      <div class="chart-head">
+        <div class="t-h2" data-ar="توزيع المصاريف" data-en="Expense Breakdown">توزيع المصاريف</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:20px">
+        <!-- Donut -->
+        <svg viewBox="0 0 100 100" style="width:90px; height:90px; flex-shrink:0">
+          <!-- Total: 34.5M, segments: 42%=14.5M, 28%=9.7M, 20%=6.9M, 10%=3.4M -->
+          <!-- Circumference of r=35 = 219.9 -->
+          <circle cx="50" cy="50" r="35" fill="none" stroke="var(--border)" stroke-width="14"/>
+          <!-- Cost of Sales 42% = 92.4 -->
+          <circle cx="50" cy="50" r="35" fill="none" stroke="#52B788" stroke-width="14"
+                  stroke-dasharray="92 128" stroke-dashoffset="0"
+                  transform="rotate(-90 50 50)"/>
+          <!-- Admin 28% = 61.6 -->
+          <circle cx="50" cy="50" r="35" fill="none" stroke="#3B82F6" stroke-width="14"
+                  stroke-dasharray="62 158" stroke-dashoffset="-92"
+                  transform="rotate(-90 50 50)"/>
+          <!-- Operations 20% = 44 -->
+          <circle cx="50" cy="50" r="35" fill="none" stroke="#F59E0B" stroke-width="14"
+                  stroke-dasharray="44 176" stroke-dashoffset="-154"
+                  transform="rotate(-90 50 50)"/>
+          <!-- Other 10% = 22 -->
+          <circle cx="50" cy="50" r="35" fill="none" stroke="#E4E4E9" stroke-width="14"
+                  stroke-dasharray="22 198" stroke-dashoffset="-198"
+                  transform="rotate(-90 50 50)"/>
+          <text x="50" y="46" text-anchor="middle" font-size="8" fill="var(--muted)" font-family="Tajawal,sans-serif">إجمالي</text>
+          <text x="50" y="58" text-anchor="middle" font-size="9" fill="var(--ink)" font-weight="600" font-family="DM Sans,sans-serif">34.5M</text>
+        </svg>
+        <!-- Legend -->
+        <div style="flex:1; display:flex; flex-direction:column; gap:8px">
+          <div style="display:flex; align-items:center; justify-content:space-between">
+            <div style="display:flex; align-items:center; gap:7px; font-size:12px; color:var(--ink2)">
+              <span style="width:10px; height:10px; border-radius:3px; background:#52B788; display:inline-block; flex-shrink:0"></span>
+              <span data-ar="تكلفة المبيعات" data-en="Cost of Sales">تكلفة المبيعات</span>
+            </div>
+            <span style="font-size:12px; font-weight:700; color:var(--ink)">42%</span>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between">
+            <div style="display:flex; align-items:center; gap:7px; font-size:12px; color:var(--ink2)">
+              <span style="width:10px; height:10px; border-radius:3px; background:#3B82F6; display:inline-block; flex-shrink:0"></span>
+              <span data-ar="إدارية" data-en="Admin">إدارية</span>
+            </div>
+            <span style="font-size:12px; font-weight:700; color:var(--ink)">28%</span>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between">
+            <div style="display:flex; align-items:center; gap:7px; font-size:12px; color:var(--ink2)">
+              <span style="width:10px; height:10px; border-radius:3px; background:#F59E0B; display:inline-block; flex-shrink:0"></span>
+              <span data-ar="تشغيلية" data-en="Operations">تشغيلية</span>
+            </div>
+            <span style="font-size:12px; font-weight:700; color:var(--ink)">20%</span>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between">
+            <div style="display:flex; align-items:center; gap:7px; font-size:12px; color:var(--ink2)">
+              <span style="width:10px; height:10px; border-radius:3px; background:var(--border2); display:inline-block; flex-shrink:0"></span>
+              <span data-ar="أخرى" data-en="Other">أخرى</span>
+            </div>
+            <span style="font-size:12px; font-weight:700; color:var(--ink)">10%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Due Diligence promo card -->
+    <div style="background:linear-gradient(140deg,#0A1630,#1A2850);border-radius:var(--r-l);padding:18px 20px;margin-top:4px;display:flex;align-items:center;gap:14px;cursor:pointer" onclick="CF.show('duediligence')">
+      <div style="width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🔍</div>
+      <div style="flex:1">
+        <div style="font-size:13.5px;font-weight:700;color:#fff;margin-bottom:3px" data-ar="وضع العناية الواجبة ✦" data-en="Due Diligence Mode ✦">وضع العناية الواجبة ✦</div>
+        <div style="font-size:11.5px;color:rgba(255,255,255,.5)" data-ar="تقييم استثماري شامل مع تحليل المخاطر" data-en="Full investment assessment with risk analysis">تقييم استثماري شامل مع تحليل المخاطر</div>
+      </div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-screen="dashboard" onclick="CF.show('dashboard')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span data-ar="الرئيسية" data-en="Home">الرئيسية</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="upload" onclick="CF.show('upload')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span data-ar="رفع" data-en="Upload">رفع</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="insights" onclick="CF.show('insights')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><span data-ar="رؤى" data-en="Insights">رؤى</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="duediligence" onclick="CF.show('duediligence')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span data-ar="تقييم" data-en="Assess">تقييم</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="reports" onclick="CF.show('reports')"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span data-ar="تقاريري" data-en="Reports">تقاريري</span><div class="nav-pip"></div></button>
+  </nav>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SCREEN 7: INSIGHTS
+     ═══════════════════════════════════════════ -->
+<div class="screen has-nav" id="s-insights">
+
+  <div class="topbar">
+    <div class="brand">Clarity<em>Finance</em></div>
+    <div class="topbar-actions">
+      <button class="icon-btn" onclick="CF.toggleTheme()"><span class="theme-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+      <button class="txt-btn lang-toggle" onclick="CF.toggleLang()">EN</button>
+      <button class="power-btn" onclick="CF.show('login')" title="تسجيل الخروج / Logout">
+        <svg viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <!-- Header -->
+    <div class="anim-1" style="margin-bottom:16px">
+      <div class="t-display" data-ar="الرؤى والتنبيهات" data-en="Insights & Alerts">الرؤى والتنبيهات</div>
+      <div class="t-small" style="margin-top:5px" data-ar="الربع الأول 2025 · محدّث قبل ساعة" data-en="Q1 2025 · Updated 1h ago">الربع الأول 2025 · محدّث قبل ساعة</div>
+    </div>
+
+    <!-- Alert cards -->
+    <div class="anim-2">
+      <div class="t-h3" style="margin-bottom:8px" data-ar="التنبيهات النشطة" data-en="ACTIVE ALERTS">التنبيهات النشطة</div>
+
+      <div class="alert alert-red" style="margin-bottom:8px">
+        <div class="alert-icon">🔴</div>
+        <div style="flex:1">
+          <div class="alert-title" data-ar="سيولة منخفضة — تحتاج اجراء" data-en="Low Cash — Action Required">سيولة منخفضة — تحتاج اجراء</div>
+          <div class="alert-body" data-ar="مدة الاستمرارية 4.2 شهر فقط. الهدف المُوصى به 6 أشهر. راجع المصاريف الثابتة الآن." data-en="Cash runway is only 4.2 months. Recommended target is 6 months. Review fixed expenses now.">مدة الاستمرارية 4.2 شهر فقط. الهدف المُوصى به 6 أشهر. راجع المصاريف الثابتة الآن.</div>
+        </div>
+        <span class="badge badge-red" style="flex-shrink:0;align-self:flex-start;font-size:10px" data-ar="حرج" data-en="Critical">حرج</span>
+      </div>
+
+      <div class="alert alert-amber" style="margin-bottom:8px">
+        <div class="alert-icon">⚠️</div>
+        <div style="flex:1">
+          <div class="alert-title" data-ar="ارتفاع المصاريف الإدارية 31%" data-en="Admin Expenses Spiked 31%">ارتفاع المصاريف الإدارية 31%</div>
+          <div class="alert-body" data-ar="ارتفعت من 180K إلى 236K هذا الربع بسبب عقد إيجار جديد. يضغط على هامش الربح." data-en="Rose from SAR 180K to 236K this quarter due to new lease. Squeezing profit margin.">ارتفعت من 180K إلى 236K هذا الربع بسبب عقد إيجار جديد. يضغط على هامش الربح.</div>
+        </div>
+        <span class="badge badge-amber" style="flex-shrink:0;align-self:flex-start;font-size:10px" data-ar="تحذير" data-en="Warning">تحذير</span>
+      </div>
+
+      <div class="alert alert-green" style="margin-bottom:8px">
+        <div class="alert-icon">📈</div>
+        <div style="flex:1">
+          <div class="alert-title" data-ar="نمو الإيرادات قوي 12.5%" data-en="Strong Revenue Growth 12.5%">نمو الإيرادات قوي 12.5%</div>
+          <div class="alert-body" data-ar="الإيرادات ارتفعت من 38M إلى 42.8M. أعلى من معدل القطاع 8%." data-en="Revenue rose from SAR 38M to 42.8M. Above sector average of 8%.">الإيرادات ارتفعت من 38M إلى 42.8M. أعلى من معدل القطاع 8%.</div>
+        </div>
+        <span class="badge badge-green" style="flex-shrink:0;align-self:flex-start;font-size:10px" data-ar="إيجابي" data-en="Positive">إيجابي</span>
+      </div>
+    </div>
+
+    <!-- Income Statement -->
+    <div class="card anim-3" style="margin-top:4px;padding:0;overflow:hidden">
+      <div style="padding:16px 16px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+        <div class="t-h3" data-ar="قائمة الدخل" data-en="INCOME STATEMENT">قائمة الدخل</div>
+        <span class="badge badge-muted" data-ar="Q1 2025" data-en="Q1 2025">Q1 2025</span>
+      </div>
+      <table class="tbl">
+        <tr>
+          <td style="font-weight:700;color:var(--ink)" data-ar="إجمالي الإيرادات" data-en="Total Revenue">إجمالي الإيرادات</td>
+          <td style="text-align:left;font-family:'DM Sans',sans-serif;font-weight:700;color:var(--green)">42,800,000</td>
+        </tr>
+        <tr>
+          <td style="color:var(--ink2);padding-right:28px" data-ar="تكلفة المبيعات" data-en="Cost of Sales">تكلفة المبيعات</td>
+          <td style="text-align:left;color:var(--red);font-family:'DM Sans',sans-serif">(26,322,000)</td>
+        </tr>
+        <tr style="background:var(--green5)">
+          <td style="font-weight:700;color:var(--ink)" data-ar="مجمل الربح" data-en="Gross Profit">مجمل الربح</td>
+          <td style="text-align:left;font-family:'DM Sans',sans-serif;font-weight:700;color:var(--green)">16,478,000</td>
+        </tr>
+        <tr>
+          <td style="color:var(--ink2);padding-right:28px" data-ar="المصاريف الإدارية" data-en="Admin Expenses">المصاريف الإدارية</td>
+          <td style="text-align:left;color:var(--red);font-family:'DM Sans',sans-serif">(8,210,000)</td>
+        </tr>
+        <tr>
+          <td style="color:var(--ink2);padding-right:28px" data-ar="مصاريف التسويق" data-en="Marketing Expenses">مصاريف التسويق</td>
+          <td style="text-align:left;color:var(--red);font-family:'DM Sans',sans-serif">(3,940,000)</td>
+        </tr>
+        <tr style="background:var(--green5)">
+          <td style="font-weight:700;color:var(--ink)" data-ar="صافي الربح" data-en="Net Profit">صافي الربح</td>
+          <td style="text-align:left;font-family:'DM Sans',sans-serif;font-weight:700;color:var(--green)">4,328,000</td>
+        </tr>
+        <tr>
+          <td style="color:var(--muted);font-size:12px" data-ar="هامش الربح الصافي" data-en="Net Margin">هامش الربح الصافي</td>
+          <td style="text-align:left;font-family:'DM Sans',sans-serif;color:var(--green);font-size:12px;font-weight:700">10.1%</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Financial Ratios -->
+    <div class="card anim-4" style="margin-top:12px">
+      <div class="t-h3" style="margin-bottom:14px" data-ar="النسب المالية" data-en="FINANCIAL RATIOS">النسب المالية</div>
+      <div style="display:flex;flex-direction:column;gap:13px">
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px">
+            <span style="color:var(--ink2)" data-ar="هامش الربح الإجمالي" data-en="Gross Margin">هامش الربح الإجمالي</span>
+            <span style="font-weight:700;color:var(--green)">38.5%</span>
+          </div>
+          <div class="progress"><div class="progress-fill" style="width:38.5%"></div></div>
+          <div style="font-size:10px;color:var(--muted);margin-top:3px" data-ar="المعيار: 35%+ ✓" data-en="Benchmark: 35%+ ✓">المعيار: 35%+ ✓</div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px">
+            <span style="color:var(--ink2)" data-ar="هامش الربح الصافي" data-en="Net Margin">هامش الربح الصافي</span>
+            <span style="font-weight:700;color:var(--amber)">10.1%</span>
+          </div>
+          <div class="progress"><div class="progress-fill" style="width:10.1%;background:var(--amber)"></div></div>
+          <div style="font-size:10px;color:var(--muted);margin-top:3px" data-ar="المعيار: 15%+ ⚠" data-en="Benchmark: 15%+ ⚠">المعيار: 15%+ ⚠</div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px">
+            <span style="color:var(--ink2)" data-ar="نسبة المصاريف" data-en="Expense Ratio">نسبة المصاريف</span>
+            <span style="font-weight:700;color:var(--amber)">80.6%</span>
+          </div>
+          <div class="progress"><div class="progress-fill" style="width:80.6%;background:var(--amber)"></div></div>
+          <div style="font-size:10px;color:var(--muted);margin-top:3px" data-ar="المعيار: أقل من 75% ⚠" data-en="Benchmark: under 75% ⚠">المعيار: أقل من 75% ⚠</div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px">
+            <span style="color:var(--ink2)" data-ar="معدل النمو" data-en="Growth Rate">معدل النمو</span>
+            <span style="font-weight:700;color:var(--green)">12.5%</span>
+          </div>
+          <div class="progress"><div class="progress-fill" style="width:42%"></div></div>
+          <div style="font-size:10px;color:var(--muted);margin-top:3px" data-ar="المعيار: 5%+ ✓" data-en="Benchmark: 5%+ ✓">المعيار: 5%+ ✓</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="anim-5" style="margin-top:14px">
+      <div class="t-h3" style="margin-bottom:10px" data-ar="التوصيات" data-en="RECOMMENDATIONS">التوصيات</div>
+      <div class="card" style="padding:0 16px">
+
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border)">
+          <div style="width:28px;height:28px;border-radius:8px;background:var(--red);color:white;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px" data-ar="خفّض المصاريف الثابتة فوراً" data-en="Cut fixed expenses immediately">خفّض المصاريف الثابتة فوراً</div>
+            <div class="t-small" data-ar="الإيجار والمستلزمات ارتفعا 31%. مراجعة العقود وتفاوض جديد يوفّر 200-400K سنوياً." data-en="Rent and supplies up 31%. Renegotiating contracts could save SAR 200-400K annually.">الإيجار والمستلزمات ارتفعا 31%. مراجعة العقود وتفاوض جديد يوفّر 200-400K سنوياً.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border)">
+          <div style="width:28px;height:28px;border-radius:8px;background:var(--amber);color:white;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px" data-ar="ابنِ احتياطي نقدي" data-en="Build cash reserve">ابنِ احتياطي نقدي</div>
+            <div class="t-small" data-ar="Runway حالي 4.2 شهر — خطر. وجّه 15% من الإيرادات لاحتياطي طوارئ لمدة 6 أشهر." data-en="Current runway 4.2 months is risky. Direct 15% of revenue to emergency reserve over 6 months.">Runway حالي 4.2 شهر — خطر. وجّه 15% من الإيرادات لاحتياطي طوارئ لمدة 6 أشهر.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border)">
+          <div style="width:28px;height:28px;border-radius:8px;background:var(--green);color:white;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px" data-ar="استثمر في التسويق لتعزيز النمو" data-en="Invest in marketing to sustain growth">استثمر في التسويق لتعزيز النمو</div>
+            <div class="t-small" data-ar="نمو 12.5% أقوى من المعدل. زيادة التسويق 20% قد ترفع الإيرادات 2-3M إضافية." data-en="12.5% growth beats sector average. 20% marketing increase could add SAR 2-3M revenue.">نمو 12.5% أقوى من المعدل. زيادة التسويق 20% قد ترفع الإيرادات 2-3M إضافية.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 0">
+          <div style="width:28px;height:28px;border-radius:8px;background:var(--blue);color:white;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px" data-ar="رفع بيانات شهرياً" data-en="Upload data monthly">رفع بيانات شهرياً</div>
+            <div class="t-small" data-ar="البيانات الشهرية تكشف Trends مبكراً وتتيح تدخّلاً سريعاً قبل تفاقم المشاكل." data-en="Monthly data reveals trends early and enables fast intervention before problems grow.">البيانات الشهرية تكشف Trends مبكراً وتتيح تدخّلاً سريعاً قبل تفاقم المشاكل.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Export CTA -->
+    <div class="card anim-6" style="margin-top:14px;background:var(--surface2);border-style:dashed">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div>
+          <div class="t-h2" style="margin-bottom:4px" data-ar="صدّر هذا التقرير" data-en="Export this report">صدّر هذا التقرير</div>
+          <div class="t-small" data-ar="PDF احترافي للمستثمرين والبنوك · Pro Plan" data-en="Professional PDF for investors and banks · Pro Plan">PDF احترافي للمستثمرين والبنوك · Pro Plan</div>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="CF.show('reports')">
+          <span data-ar="ترقية" data-en="Upgrade">ترقية</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item" data-screen="dashboard" onclick="CF.show('dashboard')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span data-ar="الرئيسية" data-en="Home">الرئيسية</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="upload" onclick="CF.show('upload')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span data-ar="رفع" data-en="Upload">رفع</span><div class="nav-pip"></div></button>
+    <button class="nav-item active" data-screen="insights" onclick="CF.show('insights')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><span data-ar="رؤى" data-en="Insights">رؤى</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="duediligence" onclick="CF.show('duediligence')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span data-ar="تقييم" data-en="Assess">تقييم</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="reports" onclick="CF.show('reports')"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span data-ar="تقاريري" data-en="Reports">تقاريري</span><div class="nav-pip"></div></button>
+  </nav>
+
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN 9: DUE DILIGENCE
+     ═══════════════════════════════════════════ -->
+<div class="screen has-nav" id="s-duediligence">
+
+  <div class="topbar">
+    <div class="brand">Clarity<em>Finance</em></div>
+    <div class="topbar-actions">
+      <button class="icon-btn" onclick="CF.toggleTheme()"><span class="theme-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+      <button class="txt-btn lang-toggle" onclick="CF.toggleLang()">EN</button>
+      <button class="power-btn" onclick="CF.show('login')" title="تسجيل الخروج / Logout">
+        <svg viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <!-- Header -->
+    <div class="anim-1" style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="width:40px;height:40px;border-radius:12px;background:var(--blue2);display:flex;align-items:center;justify-content:center;font-size:18px;border:1px solid #BFDBFE">🔍</div>
+        <div>
+          <div class="t-display" style="font-size:22px" data-ar="تقرير العناية الواجبة" data-en="Due Diligence Report">تقرير العناية الواجبة</div>
+          <div class="t-small" data-ar="شركة الرياض للتجارة · يناير–مارس 2025" data-en="Riyadh Trading Co. · Jan–Mar 2025">شركة الرياض للتجارة · يناير–مارس 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OVERALL VERDICT CARD -->
+    <div class="dd-verdict anim-1" id="dd-verdict-card">
+      <div class="dd-verdict-left">
+        <div class="dd-verdict-label" data-ar="تقييم المخاطر الإجمالي" data-en="OVERALL RISK RATING">تقييم المخاطر الإجمالي</div>
+        <div class="dd-verdict-level dd-medium" data-ar="متوسط المخاطرة" data-en="Medium Risk">متوسط المخاطرة</div>
+        <div class="dd-verdict-sub" data-ar="3 تحذيرات · 1 خطر حرج" data-en="3 warnings · 1 critical flag">3 تحذيرات · 1 خطر حرج</div>
+      </div>
+      <div class="dd-gauge">
+        <svg viewBox="0 0 80 50" width="80">
+          <path d="M10 45 A35 35 0 0 1 70 45" fill="none" stroke="var(--border)" stroke-width="6" stroke-linecap="round"/>
+          <path d="M10 45 A35 35 0 0 1 70 45" fill="none" stroke="var(--amber)" stroke-width="6" stroke-linecap="round" stroke-dasharray="110" stroke-dashoffset="40"/>
+          <text x="40" y="44" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="14" font-weight="700" fill="var(--ink)">54</text>
+        </svg>
+        <div class="dd-gauge-label" data-ar="من 100" data-en="of 100">من 100</div>
+      </div>
+    </div>
+
+    <!-- SECTION: EXECUTIVE SUMMARY -->
+    <div class="dd-section anim-2">
+      <div class="dd-section-head" onclick="DD.toggle('dd-summary')">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="dd-section-icon">📋</span>
+          <div>
+            <div class="dd-section-title" data-ar="الملخص التنفيذي" data-en="Executive Summary">الملخص التنفيذي</div>
+          </div>
+        </div>
+        <svg class="dd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="dd-section-body" id="dd-summary">
+        <div class="dd-metric-row">
+          <div class="dd-metric">
+            <div class="dd-metric-label" data-ar="إجمالي الإيرادات" data-en="Total Revenue">إجمالي الإيرادات</div>
+            <div class="dd-metric-value" style="color:var(--green)">1.24M SAR</div>
+            <div class="dd-metric-delta up">▲ 12% YoY</div>
+          </div>
+          <div class="dd-metric">
+            <div class="dd-metric-label" data-ar="صافي الربح" data-en="Net Profit">صافي الربح</div>
+            <div class="dd-metric-value" style="color:var(--green)">187K SAR</div>
+            <div class="dd-metric-delta up">▲ 8%</div>
+          </div>
+          <div class="dd-metric">
+            <div class="dd-metric-label" data-ar="هامش الربح" data-en="Profit Margin">هامش الربح</div>
+            <div class="dd-metric-value" style="color:var(--amber)">15.1%</div>
+            <div class="dd-metric-delta" style="color:var(--muted)" data-ar="أقل من المعيار 20%" data-en="Below 20% benchmark">أقل من المعيار</div>
+          </div>
+          <div class="dd-metric">
+            <div class="dd-metric-label" data-ar="مدة الاستمرارية" data-en="Cash Runway">مدة الاستمرارية</div>
+            <div class="dd-metric-value" style="color:var(--amber)">4.2 mo</div>
+            <div class="dd-metric-delta down">⚠ منخفض</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: LIQUIDITY & SOLVENCY -->
+    <div class="dd-section anim-3">
+      <div class="dd-section-head" onclick="DD.toggle('dd-liquidity')">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="dd-section-icon">💧</span>
+          <div>
+            <div class="dd-section-title" data-ar="السيولة والملاءة المالية" data-en="Liquidity & Solvency">السيولة والملاءة المالية</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="badge badge-amber" data-ar="تحذير" data-en="Warning">تحذير</span>
+          <svg class="dd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="dd-section-body" id="dd-liquidity" style="display:none">
+        <div class="dd-ratio-list">
+          <div class="dd-ratio">
+            <div class="dd-ratio-info">
+              <div class="dd-ratio-name" data-ar="نسبة السيولة الحالية" data-en="Current Ratio">نسبة السيولة الحالية</div>
+              <div class="dd-ratio-bench" data-ar="المعيار الصحي: > 2.0" data-en="Healthy benchmark: > 2.0">المعيار الصحي: &gt; 2.0</div>
+            </div>
+            <div class="dd-ratio-bar-wrap">
+              <div class="dd-ratio-val dd-val-warn">1.4</div>
+              <div class="dd-bar"><div class="dd-bar-fill dd-bar-warn" style="width:60%"></div></div>
+            </div>
+          </div>
+          <div class="dd-ratio">
+            <div class="dd-ratio-info">
+              <div class="dd-ratio-name" data-ar="نسبة السيولة السريعة" data-en="Quick Ratio">نسبة السيولة السريعة</div>
+              <div class="dd-ratio-bench" data-ar="المعيار الصحي: > 1.0" data-en="Healthy: > 1.0">المعيار الصحي: &gt; 1.0</div>
+            </div>
+            <div class="dd-ratio-bar-wrap">
+              <div class="dd-ratio-val dd-val-ok">1.1</div>
+              <div class="dd-bar"><div class="dd-bar-fill dd-bar-ok" style="width:75%"></div></div>
+            </div>
+          </div>
+          <div class="dd-ratio" style="border-bottom:none">
+            <div class="dd-ratio-info">
+              <div class="dd-ratio-name" data-ar="نسبة الدين إلى حقوق الملكية" data-en="Debt-to-Equity">نسبة الدين / الملكية</div>
+              <div class="dd-ratio-bench" data-ar="المعيار الصحي: < 1.5" data-en="Healthy: < 1.5">المعيار الصحي: &lt; 1.5</div>
+            </div>
+            <div class="dd-ratio-bar-wrap">
+              <div class="dd-ratio-val dd-val-ok">0.8</div>
+              <div class="dd-bar"><div class="dd-bar-fill dd-bar-ok" style="width:45%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: MANAGEMENT EFFICIENCY -->
+    <div class="dd-section anim-3">
+      <div class="dd-section-head" onclick="DD.toggle('dd-efficiency')">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="dd-section-icon">⚙️</span>
+          <div>
+            <div class="dd-section-title" data-ar="كفاءة الإدارة" data-en="Management Efficiency">كفاءة الإدارة</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="badge badge-green" data-ar="جيد" data-en="Good">جيد</span>
+          <svg class="dd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="dd-section-body" id="dd-efficiency" style="display:none">
+        <div class="dd-ratio-list">
+          <div class="dd-ratio">
+            <div class="dd-ratio-info">
+              <div class="dd-ratio-name" data-ar="معدل دوران الأصول" data-en="Asset Turnover">معدل دوران الأصول</div>
+              <div class="dd-ratio-bench" data-ar="المعيار: > 1.0" data-en="Benchmark: > 1.0">المعيار: &gt; 1.0</div>
+            </div>
+            <div class="dd-ratio-bar-wrap">
+              <div class="dd-ratio-val dd-val-ok">1.8</div>
+              <div class="dd-bar"><div class="dd-bar-fill dd-bar-ok" style="width:82%"></div></div>
+            </div>
+          </div>
+          <div class="dd-ratio" style="border-bottom:none">
+            <div class="dd-ratio-name" data-ar="المصاريف الإدارية / الإيرادات" data-en="Admin Expenses / Revenue">المصاريف الإدارية / الإيرادات</div>
+            <div class="dd-ratio-bench" data-ar="المعيار: < 30%" data-en="Benchmark: < 30%">المعيار: &lt; 30%</div>
+            <div class="dd-ratio-bar-wrap" style="margin-top:6px">
+              <div class="dd-ratio-val dd-val-ok">22%</div>
+              <div class="dd-bar"><div class="dd-bar-fill dd-bar-ok" style="width:55%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: RED FLAGS -->
+    <div class="dd-section dd-section-danger anim-4">
+      <div class="dd-section-head" onclick="DD.toggle('dd-flags')">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="dd-section-icon">🚩</span>
+          <div>
+            <div class="dd-section-title" style="color:var(--red)" data-ar="الأعلام الحمراء" data-en="Red Flags">الأعلام الحمراء</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="badge badge-red" data-ar="4 مشاكل" data-en="4 issues">4 مشاكل</span>
+          <svg class="dd-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="dd-section-body" id="dd-flags">
+        <div class="dd-flag dd-flag-critical">
+          <div class="dd-flag-icon">🔴</div>
+          <div class="dd-flag-body">
+            <div class="dd-flag-title" data-ar="تركيز الإيرادات — خطر حرج" data-en="Revenue Concentration — Critical">تركيز الإيرادات — خطر حرج</div>
+            <div class="dd-flag-desc" data-ar="82% من الإيرادات من عميل واحد. أي خسارة لهذا العميل قد تكون كارثية." data-en="82% of revenue from one client. Loss of this client could be catastrophic.">82% من الإيرادات من عميل واحد. أي خسارة لهذا العميل قد تكون كارثية.</div>
+          </div>
+        </div>
+        <div class="dd-flag dd-flag-warn">
+          <div class="dd-flag-icon">🟡</div>
+          <div class="dd-flag-body">
+            <div class="dd-flag-title" data-ar="سيولة منخفضة" data-en="Low Cash Runway">سيولة منخفضة</div>
+            <div class="dd-flag-desc" data-ar="مدة الاستمرارية 4.2 أشهر فقط. أقل من المعيار الموصى به (6 أشهر)." data-en="Cash runway only 4.2 months. Below recommended 6-month benchmark.">مدة الاستمرارية 4.2 أشهر فقط. أقل من المعيار الموصى به (6 أشهر).</div>
+          </div>
+        </div>
+        <div class="dd-flag dd-flag-warn">
+          <div class="dd-flag-icon">🟡</div>
+          <div class="dd-flag-body">
+            <div class="dd-flag-title" data-ar="هامش ربح منخفض" data-en="Below-Benchmark Profit Margin">هامش ربح منخفض</div>
+            <div class="dd-flag-desc" data-ar="هامش الربح 15.1% — أقل من المعيار الصحي 20% لهذا القطاع." data-en="Profit margin 15.1% — below 20% healthy benchmark for this sector.">هامش الربح 15.1% — أقل من المعيار الصحي 20%.</div>
+          </div>
+        </div>
+        <div class="dd-flag dd-flag-warn" style="border-bottom:none">
+          <div class="dd-flag-icon">🟡</div>
+          <div class="dd-flag-body">
+            <div class="dd-flag-title" data-ar="نسبة السيولة الحالية منخفضة" data-en="Low Current Ratio">نسبة السيولة الحالية منخفضة</div>
+            <div class="dd-flag-desc" data-ar="1.4 مقابل المعيار الصحي 2.0. قد تواجه صعوبة في سداد الالتزامات قصيرة الأجل." data-en="1.4 vs. 2.0 healthy benchmark. May struggle to meet short-term obligations.">1.4 مقابل المعيار الصحي 2.0.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INVESTMENT RECOMMENDATION -->
+    <div class="dd-recommendation anim-5">
+      <div class="dd-rec-label" data-ar="التوصية الاستثمارية" data-en="INVESTMENT RECOMMENDATION">التوصية الاستثمارية</div>
+      <div class="dd-rec-levels">
+        <div class="dd-rec-level dd-rec-inactive" data-ar="منخفض" data-en="Low Risk">منخفض</div>
+        <div class="dd-rec-level dd-rec-active-medium" data-ar="متوسط ◀" data-en="Medium ◀">متوسط ◀</div>
+        <div class="dd-rec-level dd-rec-inactive" data-ar="مرتفع" data-en="High Risk">مرتفع</div>
+      </div>
+      <div class="dd-rec-text" data-ar="الشركة تُظهر نمواً حقيقياً وإدارة جيدة، لكن تركيز الإيرادات على عميل واحد وانخفاض السيولة يمثلان مخاطر جوهرية. يُنصح بالاستثمار مع ضمانات تعاقدية ومتابعة ربعية." data-en="Company shows real growth and good management, but single-client revenue concentration and low liquidity are material risks. Recommend investing with contractual safeguards and quarterly monitoring.">الشركة تُظهر نمواً حقيقياً وإدارة جيدة، لكن تركيز الإيرادات على عميل واحد وانخفاض السيولة يمثلان مخاطر جوهرية.</div>
+    </div>
+
+    <!-- Export -->
+    <button class="btn btn-primary btn-full anim-6" style="margin-top:16px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span data-ar="تصدير تقرير PDF" data-en="Export PDF Report">تصدير تقرير PDF</span>
+    </button>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item" data-screen="dashboard" onclick="CF.show('dashboard')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span data-ar="الرئيسية" data-en="Home">الرئيسية</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="upload" onclick="CF.show('upload')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span data-ar="رفع" data-en="Upload">رفع</span><div class="nav-pip"></div></button>
+    <button class="nav-item active" data-screen="duediligence" onclick="CF.show('duediligence')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span data-ar="تقييم" data-en="Assess">تقييم</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="reports" onclick="CF.show('reports')"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span data-ar="تقاريري" data-en="Reports">تقاريري</span><div class="nav-pip"></div></button>
+  </nav>
+
+
+
+<!-- ═══════════════════════════════════════════
+     SCREEN 8: REPORTS
+     ═══════════════════════════════════════════ -->
+<div class="screen has-nav" id="s-reports">
+
+  <div class="topbar">
+    <div class="brand">Clarity<em>Finance</em></div>
+    <div class="topbar-actions">
+      <button class="icon-btn" onclick="CF.toggleTheme()"><span class="theme-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+      <button class="txt-btn lang-toggle" onclick="CF.toggleLang()">EN</button>
+      <button class="power-btn" onclick="CF.show('login')" title="تسجيل الخروج / Logout">
+        <svg viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <!-- Plan banner -->
+    <div class="anim-1" style="background:linear-gradient(140deg,var(--green),#1A3D2E);border-radius:var(--r-l);padding:18px 20px;color:white;margin-bottom:14px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.04)"></div>
+      <div style="font-size:9px;font-weight:800;letter-spacing:1.2px;opacity:.5;margin-bottom:5px;text-transform:uppercase" data-ar="باقتك الحالية" data-en="CURRENT PLAN">باقتك الحالية</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1">
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700" data-ar="Free Plan" data-en="Free Plan">Free Plan</div>
+          <div style="font-size:11.5px;opacity:.6;margin-top:3px" data-ar="1 تقرير/شهر · أرشيف 30 يوم" data-en="1 report/month · 30-day archive">1 تقرير/شهر · أرشيف 30 يوم</div>
+        </div>
+        <button class="btn btn-sm" style="background:rgba(255,255,255,.15);color:white;border:1px solid rgba(255,255,255,.2)" data-ar="ترقية للـ Pro" data-en="Upgrade to Pro">ترقية للـ Pro</button>
+      </div>
+      <!-- usage bar -->
+      <div style="margin-top:12px;position:relative;z-index:1">
+        <div style="display:flex;justify-content:space-between;font-size:10.5px;opacity:.6;margin-bottom:5px">
+          <span data-ar="استُخدم هذا الشهر" data-en="Used this month">استُخدم هذا الشهر</span>
+          <span>1 / 1</span>
+        </div>
+        <div style="height:5px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden">
+          <div style="width:100%;height:100%;background:rgba(255,255,255,.6);border-radius:4px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upgrade cards -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px" class="anim-2">
+      <div style="background:var(--amber2);border:1.5px solid var(--amber);border-radius:var(--r-m);padding:14px">
+        <div style="font-size:10px;font-weight:800;color:var(--amber);letter-spacing:.5px;margin-bottom:6px">PRO</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--ink)">99 <span style="font-size:11px;font-weight:400;color:var(--muted)" data-ar="ر.س/شهر" data-en="SAR/mo">ر.س/شهر</span></div>
+        <div style="font-size:10.5px;color:var(--ink2);margin:6px 0 10px;line-height:1.5" data-ar="تقارير غير محدودة · PDF · أرشيف دائم" data-en="Unlimited · PDF export · Forever archive">تقارير غير محدودة · PDF · أرشيف دائم</div>
+        <button class="btn btn-sm btn-primary" style="width:100%;height:32px;font-size:11.5px" data-ar="اشترك" data-en="Subscribe">اشترك</button>
+      </div>
+      <div style="background:var(--blue2);border:1.5px solid #93C5FD;border-radius:var(--r-m);padding:14px">
+        <div style="font-size:10px;font-weight:800;color:var(--blue);letter-spacing:.5px;margin-bottom:6px">INVESTOR ✦</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--ink)">299 <span style="font-size:11px;font-weight:400;color:var(--muted)" data-ar="ر.س/شهر" data-en="SAR/mo">ر.س/شهر</span></div>
+        <div style="font-size:10.5px;color:var(--ink2);margin:6px 0 10px;line-height:1.5" data-ar="كل Pro + Due Diligence + مقارنة متقدمة" data-en="All Pro + Due Diligence + Advanced compare">كل Pro + Due Diligence + مقارنة متقدمة</div>
+        <button class="btn btn-sm btn-outline" style="width:100%;height:32px;font-size:11.5px;border-color:#93C5FD;color:var(--blue)" data-ar="اشترك" data-en="Subscribe">اشترك</button>
+      </div>
+    </div>
+
+    <!-- Reports archive -->
+    <div class="section-head anim-3">
+      <div class="t-h3" data-ar="أرشيف التقارير" data-en="REPORTS ARCHIVE">أرشيف التقارير</div>
+      <span class="badge badge-muted" data-ar="3 تقارير" data-en="3 reports">3 تقارير</span>
+    </div>
+
+    <div class="card anim-3" style="padding:0;overflow:hidden;margin-bottom:12px">
+
+      <!-- Report 1 — active, downloadable -->
+      <div style="padding:14px 16px;border-bottom:1px solid var(--border)">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+          <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(140deg,#388060,var(--green));display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;box-shadow:0 3px 10px rgba(42,96,72,.2)">📊</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13.5px;font-weight:700;color:var(--ink)" data-ar="تقرير مارس 2025" data-en="March 2025 Report">تقرير مارس 2025</div>
+            <div style="display:flex;align-items:center;gap:6px;margin-top:3px;flex-wrap:wrap">
+              <span style="font-size:11px;color:var(--muted)" data-ar="رُفع قبل ساعة" data-en="Uploaded 1h ago">رُفع قبل ساعة</span>
+              <span style="color:var(--border)">·</span>
+              <span style="font-size:11px">Health: <strong style="color:var(--green)">76</strong></span>
+              <span class="badge badge-green" style="font-size:9.5px;padding:1px 7px" data-ar="نشط" data-en="Active">نشط</span>
+            </div>
+          </div>
+        </div>
+        <!-- Mini KPIs -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px">
+          <div style="background:var(--bg);border-radius:8px;padding:8px;text-align:center">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:2px" data-ar="الإيرادات" data-en="Revenue">الإيرادات</div>
+            <div style="font-size:13px;font-weight:700;color:var(--green);font-family:'DM Sans',sans-serif">42.8M</div>
+          </div>
+          <div style="background:var(--bg);border-radius:8px;padding:8px;text-align:center">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:2px" data-ar="هامش الربح" data-en="Margin">هامش الربح</div>
+            <div style="font-size:13px;font-weight:700;color:var(--amber);font-family:'DM Sans',sans-serif">10.1%</div>
+          </div>
+          <div style="background:var(--bg);border-radius:8px;padding:8px;text-align:center">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:2px" data-ar="النمو" data-en="Growth">النمو</div>
+            <div style="font-size:13px;font-weight:700;color:var(--green);font-family:'DM Sans',sans-serif">+12.5%</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-sm btn-outline" style="flex:1" onclick="CF.show('dashboard')" data-ar="عرض التقرير" data-en="View Report">عرض التقرير</button>
+          <button class="btn btn-sm btn-ghost" style="flex:1;opacity:.45;cursor:not-allowed" title="Pro Plan required">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-ar="تحميل PDF 🔒" data-en="Download PDF 🔒">تحميل PDF 🔒</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Report 2 — expires soon -->
+      <div style="padding:14px 16px;border-bottom:1px solid var(--border)">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+          <div style="width:40px;height:40px;border-radius:12px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">📊</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13.5px;font-weight:700;color:var(--ink)" data-ar="تقرير فبراير 2025" data-en="February 2025 Report">تقرير فبراير 2025</div>
+            <div style="display:flex;align-items:center;gap:6px;margin-top:3px;flex-wrap:wrap">
+              <span style="font-size:11px;color:var(--muted)" data-ar="منذ 32 يوم" data-en="32 days ago">منذ 32 يوم</span>
+              <span style="color:var(--border)">·</span>
+              <span style="font-size:11px">Health: <strong style="color:var(--amber)">71</strong></span>
+              <span class="badge badge-amber" style="font-size:9.5px;padding:1px 7px" data-ar="ينتهي قريباً" data-en="Expires soon">ينتهي قريباً</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-sm btn-outline" style="flex:1" onclick="CF.show('dashboard')" data-ar="عرض" data-en="View">عرض</button>
+          <button class="btn btn-sm btn-ghost" style="flex:1;opacity:.45;cursor:not-allowed">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-ar="PDF 🔒" data-en="PDF 🔒">PDF 🔒</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Report 3 — expired -->
+      <div style="padding:14px 16px;opacity:.4">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:40px;height:40px;border-radius:12px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">📋</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13.5px;font-weight:700;color:var(--ink)" data-ar="تقرير يناير 2025" data-en="January 2025 Report">تقرير يناير 2025</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:3px" data-ar="منتهي · احتفظ بأرشيف غير محدود مع Pro" data-en="Expired · Unlimited archive with Pro">منتهي · احتفظ بأرشيف غير محدود مع Pro</div>
+          </div>
+          <span class="badge badge-muted" data-ar="منتهي" data-en="Expired">منتهي</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Compare periods — Pro feature -->
+    <div class="card anim-4" style="border-style:dashed;background:var(--surface2)">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:38px;height:38px;border-radius:10px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">📉</div>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px" data-ar="مقارنة الفترات 🔒" data-en="Compare Periods 🔒">مقارنة الفترات 🔒</div>
+          <div class="t-small" data-ar="قارن أرقامك بين أي شهرين أو ربعين — Pro Plan" data-en="Compare figures between any two months or quarters — Pro Plan">قارن أرقامك بين أي شهرين أو ربعين — Pro Plan</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-full anim-5" style="margin-top:14px" onclick="CF.show('upload')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      <span data-ar="رفع تقرير جديد" data-en="Upload new report">رفع تقرير جديد</span>
+    </button>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item" data-screen="dashboard" onclick="CF.show('dashboard')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span data-ar="الرئيسية" data-en="Home">الرئيسية</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="upload" onclick="CF.show('upload')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><span data-ar="رفع" data-en="Upload">رفع</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="insights" onclick="CF.show('insights')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><span data-ar="رؤى" data-en="Insights">رؤى</span><div class="nav-pip"></div></button>
+    <button class="nav-item" data-screen="duediligence" onclick="CF.show('duediligence')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span data-ar="تقييم" data-en="Assess">تقييم</span><div class="nav-pip"></div></button>
+    <button class="nav-item active" data-screen="reports" onclick="CF.show('reports')"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span data-ar="تقاريري" data-en="Reports">تقاريري</span><div class="nav-pip"></div></button>
+  </nav>
+
+</div>
+
+<script>
+
+
+var CF = {
+  lang:  'ar',
+  theme: 'light',
+  cur:   'login',
+
+  
+  init: function() {
+    var saved_theme = localStorage.getItem('cf_theme') || 'light';
+    var saved_lang  = localStorage.getItem('cf_lang')  || 'ar';
+    CF.setTheme(saved_theme, true);
+    CF.setLang(saved_lang,   true);
+    CF.show(CF.cur);
+  },
+
+  
+  show: function(id) {
+    var prev = document.getElementById('s-' + CF.cur);
+    if (prev) prev.style.display = 'none';
+    CF.cur = id;
+    var next = document.getElementById('s-' + id);
+    if (!next) return;
+    next.style.display = 'block';
+    next.scrollTop = 0;
+    CF.syncNav(id);
+    if (id === 'validation') CF.runValidation();
+    if (id === 'processing') CF.runProcessing();
+  },
+
+  runProcessing: function() {
+    PROC.run();
+  },
+
+  runValidation: function() {
+    var steps = document.querySelectorAll('#val-steps .val-step');
+    var proc  = document.getElementById('val-processing');
+    var succ  = document.getElementById('val-success');
+    var err   = document.getElementById('val-error');
+    if (!proc) return;
+    /* reset */
+    steps.forEach(function(s) { s.style.color = ''; s.style.fontWeight = ''; s.style.opacity = '0.45'; });
+    proc.style.display = 'block';
+    if (succ) succ.style.display = 'none';
+    if (err)  err.style.display  = 'none';
+    var i = 0;
+    function nextStep() {
+      if (i < steps.length) {
+        steps[i].style.color      = 'var(--green)';
+        steps[i].style.fontWeight = '700';
+        steps[i].style.opacity    = '1';
+        i++;
+        setTimeout(nextStep, 680);
+      } else {
+        setTimeout(function() {
+          proc.style.display = 'none';
+          if (succ) succ.style.display = 'block';
+        }, 450);
+      }
+    }
+    setTimeout(nextStep, 400);
+  },
+
+  
+  syncNav: function(id) {
+    document.querySelectorAll('.nav-item').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.screen === id);
+    });
+  },
+
+  
+  setLang: function(lang, silent) {
+    CF.lang = lang;
+    localStorage.setItem('cf_lang', lang);
+    var isAr = lang === 'ar';
+    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('dir',  isAr ? 'rtl' : 'ltr');
+
+    /* Update all text nodes */
+    document.querySelectorAll('[data-ar]').forEach(function(el) {
+      if (el.tagName === 'INPUT' || el.tagName === 'SELECT' || el.tagName === 'TEXTAREA') return;
+      var hasElementChild = false;
+      for (var i = 0; i < el.childNodes.length; i++) {
+        if (el.childNodes[i].nodeType === 1) { hasElementChild = true; break; }
+      }
+      if (!hasElementChild) {
+        el.textContent = isAr
+          ? (el.dataset.ar || '')
+          : (el.dataset.en || el.dataset.ar || '');
+      }
+    });
+
+    /* Update lang toggle buttons */
+    document.querySelectorAll('.lang-toggle').forEach(function(btn) {
+      btn.textContent = isAr ? 'EN' : 'ع';
+    });
+
+    if (!silent) CF.show(CF.cur);
+  },
+
+  toggleLang: function() {
+    CF.setLang(CF.lang === 'ar' ? 'en' : 'ar');
+  },
+
+  
+  setTheme: function(theme, silent) {
+    CF.theme = theme;
+    localStorage.setItem('cf_theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+
+    /* Update all theme toggle icons */
+    document.querySelectorAll('.theme-icon').forEach(function(el) {
+      el.innerHTML = theme === 'dark'
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
+        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    });
+  },
+
+  toggleTheme: function() {
+    CF.setTheme(CF.theme === 'light' ? 'dark' : 'light');
+  }
+};
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  CF.init();
+});
+
+</script>
+<script>
+
+
+var UPLOAD = {
+  cur: 'SAR',
+
+  dragOver: function(e) {
+    e.preventDefault();
+    document.getElementById('drop-zone').classList.add('drag');
+  },
+  dragLeave: function() {
+    document.getElementById('drop-zone').classList.remove('drag');
+  },
+  drop: function(e) {
+    e.preventDefault();
+    UPLOAD.dragLeave();
+    var f = e.dataTransfer.files[0];
+    if (f) UPLOAD.showFile(f);
+  },
+  fileChosen: function(inp) {
+    if (inp.files && inp.files[0]) UPLOAD.showFile(inp.files[0]);
+  },
+  showFile: function(f) {
+    document.getElementById('file-name').textContent = f.name;
+    document.getElementById('file-meta').textContent = (f.size / 1024 / 1024).toFixed(1) + ' MB - ' + f.name.split('.').pop().toUpperCase();
+    document.getElementById('file-preview').classList.add('show');
+  },
+  clearFile: function() {
+    document.getElementById('file-input').value = '';
+    document.getElementById('file-preview').classList.remove('show');
+  },
+  setCur: function(cur, btn) {
+    UPLOAD.cur = cur;
+    ['cur-sar','cur-usd','cur-eur'].forEach(function(id) {
+      var el = document.getElementById(id);
+      el.className = 'btn btn-sm ' + (el.id === btn.id ? 'btn-primary' : 'btn-ghost');
+    });
+  },
+  start: function() {
+    CF.show('validation');
+  }
+};
+
+
+/* Validation animation now triggered via CF.runValidation() inside CF.show() */
+
+var MAPPING = {
+  confirmed: 0,
+  manual: 0,
+
+  filter: function(type, btn) {
+    document.querySelectorAll('.map-item').forEach(function(el) {
+      el.style.display = (type === 'all' || el.dataset.status === type) ? '' : 'none';
+    });
+    document.querySelectorAll('.tabs .tab').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+  },
+
+  toggleCat: function(hdr) {
+    var body = hdr.nextElementSibling;
+    var open = body.style.display !== 'none';
+    body.style.display = open ? 'none' : 'block';
+    hdr.classList.toggle('open', !open);
+  },
+
+  confirm: function(btn, itemId) {
+    var item = document.getElementById(itemId);
+    if (!item) return;
+    var sel = item.querySelector('select');
+    var catText = sel ? sel.options[sel.selectedIndex].textContent : '';
+    item.classList.remove('map-item-review');
+    item.classList.add('map-item-done');
+    item.dataset.status = 'auto';
+    item.innerHTML = '<div style="display:flex;align-items:center;gap:12px">'
+      + '<div class="map-item-main"><div class="map-item-name">' + itemId.replace('map-item-','').replace(/-/g,' ') + '</div>'
+      + '<div class="map-item-cat">' + catText + '</div></div>'
+      + '<div class="map-item-end"><span class="conf-pill conf-high">✓</span>'
+      + '<span class="map-check">✓</span></div></div>';
+    MAPPING.confirmed++;
+    MAPPING.updateProgress();
+  },
+
+  manualSelect: function(sel, itemId) {
+    if (!sel.value && sel.selectedIndex === 0) return;
+    var item = document.getElementById(itemId);
+    if (!item) return;
+    var catText = sel.options[sel.selectedIndex].textContent;
+    item.classList.remove('map-item-manual');
+    item.classList.add('map-item-done');
+    item.dataset.status = 'auto';
+    item.innerHTML = '<div style="display:flex;align-items:center;gap:12px">'
+      + '<div class="map-item-main"><div class="map-item-name">' + itemId.replace('map-item-','').replace(/-/g,' ') + '</div>'
+      + '<div class="map-item-cat">' + catText + '</div></div>'
+      + '<div class="map-item-end"><span class="conf-pill conf-high">✓</span>'
+      + '<span class="map-check">✓</span></div></div>';
+    MAPPING.manual++;
+    MAPPING.updateProgress();
+  },
+
+  updateProgress: function() {
+    var done = 18 + MAPPING.confirmed + MAPPING.manual;
+    var total = 24;
+    var pct = Math.round(done / total * 100);
+    var bar = document.getElementById('map-progress');
+    var lbl = document.getElementById('map-pct-label');
+    if (bar) bar.style.width = pct + '%';
+    if (lbl) lbl.textContent = done + ' / ' + total;
+  }
+};
+
+var DD = {
+  toggle: function(id) {
+    var body = document.getElementById(id);
+    if (!body) return;
+    var hdr = body.previousElementSibling;
+    var isOpen = body.style.display !== 'none';
+    body.style.display = isOpen ? 'none' : 'block';
+    if (hdr) hdr.classList.toggle('open', !isOpen);
+  }
+};
+
+
+/* Processing animation triggered via CF.runProcessing() inside CF.show() */
+
+var PROC = {
+  run: function() {
+    var steps = document.querySelectorAll('#proc-list .proc-step');
+    var ring  = document.getElementById('proc-ring');
+    var pct   = document.getElementById('proc-pct');
+    if (!steps.length) return;
+
+    var pcts  = [25, 50, 75, 100];
+    var circumference = 226;
+    var i = 0;
+
+    /* Reset */
+    steps.forEach(function(s) {
+      var dot  = s.querySelector('.proc-dot');
+      var span = s.querySelector('span');
+      if (dot)  { dot.style.borderColor  = ''; dot.style.background = ''; dot.style.color = ''; }
+      if (span) { span.style.color = ''; span.style.fontWeight = ''; }
+    });
+    if (ring) ring.style.strokeDashoffset = circumference;
+    if (pct)  pct.textContent = '0%';
+
+    function tick() {
+      if (i < steps.length) {
+        var dot  = steps[i].querySelector('.proc-dot');
+        var span = steps[i].querySelector('span');
+        /* Activate dot */
+        if (dot) {
+          dot.style.background  = 'var(--green)';
+          dot.style.borderColor = 'var(--green)';
+          dot.style.color       = '#fff';
+        }
+        if (span) {
+          span.style.color      = 'var(--ink)';
+          span.style.fontWeight = '600';
+        }
+        /* Update ring */
+        var p = pcts[i];
+        var offset = circumference - (circumference * p / 100);
+        if (ring) ring.style.strokeDashoffset = offset;
+        if (pct)  pct.textContent = p + '%';
+
+        i++;
+        setTimeout(tick, 900);
+      } else {
+        setTimeout(function() { CF.show('dashboard'); }, 600);
+      }
+    }
+
+    setTimeout(tick, 500);
+  }
+};
+
+
+</script>
+</body>
+</html>
