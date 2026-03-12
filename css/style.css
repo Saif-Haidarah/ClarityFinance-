@@ -1,9 +1,14 @@
-/* ══ tokens.css ══ */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans... ');
-
+/* تنسيقات واجهة ClarityFinance من ملف v10 */
 :root {
-  --bg: #F8F9FA;
-  /* ... بقية الألوان والتنسيقات ... */
+    --primary-green: #1a5c40;
+    --accent-gold: #d4af37;
+    --glass-bg: rgba(255, 255, 255, 0.9);
 }
 
-/* انسخ كل الـ CSS من v10 وضعه هنا بالكامل */
+body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', 'Tajawal', sans-serif;
+    background: linear-gradient(135deg, #f0f2ee 0%, #e6e9e0 100%);
+}
+
+/* أضف بقية الأكواد الموجودة في ملفك v10 هنا */
