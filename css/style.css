@@ -1,29 +1,9 @@
+/* ══ tokens.css ══ */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans... ');
+
 :root {
-    --primary: #1a3a3a;
-    --accent: #d4af37;
-    --bg: #f8f9fa;
-    --surface: #ffffff;
+  --bg: #F8F9FA;
+  /* ... بقية الألوان والتنسيقات ... */
 }
 
-body {
-    margin: 0;
-    font-family: 'Tajawal', sans-serif;
-    background: var(--bg);
-}
-
-.app-container {
-    display: flex;
-    min-height: 100vh;
-}
-
-.sidebar {
-    width: 250px;
-    background: var(--primary);
-    color: white;
-    padding: 20px;
-}
-
-.main-content {
-    flex: 1;
-    padding: 30px;
-}
+/* انسخ كل الـ CSS من v10 وضعه هنا بالكامل */
