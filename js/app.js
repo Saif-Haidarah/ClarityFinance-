@@ -1,82 +1,55 @@
-/**
- * ClarityFinance App Logic v1.0
- * المحرك الأساسي لإدارة الواجهة والبيانات
- */
-
 const App = {
-    // 1. حالة التطبيق (State)
     state: {
         currentLang: 'ar',
-        currentScreen: 'dashboard',
-        isFileDataLoaded: false,
-        financialData: null
+        currentScreen: 'dashboard'
     },
 
-    // 2. القاموس (Translations)
-    translations: {
-        ar: {
-            dashboard: "الرئيسية",
-            upload: "رفع البيانات",
-            reports: "التقارير",
-            healthScore: "مؤشر الصحة المالية",
-            langBtn: "English"
-        },
-        en: {
-            dashboard: "Dashboard",
-            upload: "Upload Data",
-            reports: "Reports",
-            healthScore: "Financial Health Score",
-            langBtn: "العربية"
-        }
+    // محتوى الشاشات (سننقل تصميمك v10 هنا)
+    screens: {
+        dashboard: `
+            <div class="dashboard-grid">
+                <div class="card health-card">
+                    <h3>مؤشر الصحة المالية</h3>
+                    <div class="score">72%</div>
+                </div>
+                <div class="card stats-card">
+                    <h3>الإيرادات</h3>
+                    <p>﷼ 0</p>
+                </div>
+                <div class="card stats-card">
+                    <h3>المصاريف</h3>
+                    <p>﷼ 0</p>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="mainChart"></canvas>
+            </div>
+        `,
+        upload: `
+            <div class="upload-area">
+                <h2>ارفع ملفك المالي (CSV/Excel)</h2>
+                <input type="file" id="fileInput" hidden>
+                <button onclick="document.getElementById('fileInput').click()" class="btn-primary">اختر الملف</button>
+                <p>سنسحب البيانات ونحللها لك في ثوانٍ</p>
+            </div>
+        `
     },
 
-    // 3. دالة التشغيل الأولية (Init)
     init() {
-        console.log("App Initialized...");
-        this.applyLanguage();
-        this.showScreen('upload'); // نبدأ بشاشة الرفع كأول خطوة للمستخدم
+        this.render();
     },
 
-    // 4. دالة التنقل بين الشاشات
     showScreen(screenId) {
         this.state.currentScreen = screenId;
-        
-        // إخفاء كل الشاشات أولاً
-        document.querySelectorAll('.screen').forEach(screen => {
-            screen.style.display = 'none';
-        });
+        this.render();
+    },
 
-        // إظهار الشاشة المختارة فقط
-        const targetScreen = document.getElementById(`screen-${screenId}`);
-        if (targetScreen) {
-            targetScreen.style.display = 'block';
+    render() {
+        const content = document.getElementById('screen-content');
+        if (content) {
+            content.innerHTML = this.screens[this.state.currentScreen];
         }
-
-        console.log(`Mapsd to: ${screenId}`);
-    },
-
-    // 5. إدارة اللغات
-    toggleLang() {
-        this.state.currentLang = this.state.currentLang === 'ar' ? 'en' : 'ar';
-        this.applyLanguage();
-    },
-
-    applyLanguage() {
-        const lang = this.state.currentLang;
-        const t = this.translations[lang];
-
-        // تغيير اتجاه الصفحة
-        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-        document.documentElement.lang = lang;
-
-        // تحديث نصوص الأزرار (أمثلة)
-        const langBtn = document.getElementById('langBtn');
-        if (langBtn) langBtn.innerText = t.langBtn;
-
-        // تحديث الخطوط بناءً على اللغة
-        document.body.style.fontFamily = lang === 'ar' ? "'Tajawal', sans-serif" : "'Plus Jakarta Sans', sans-serif";
     }
 };
 
-// تشغيل التطبيق عند تحميل الصفحة
 window.addEventListener('DOMContentLoaded', () => App.init());
