@@ -1,36 +1,73 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <title>ClarityFinance | المنصة المالية</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <meta name="theme-color" content="#1A5C40"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <title>ClarityFinance</title>
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/screens.css">
+  <link rel="stylesheet" href="css/enhancements.css">
 </head>
 <body>
 
-    <div class="app-container">
-        <aside class="sidebar">
-            <h2>Clarity</h2>
-            <nav>
-                <button onclick="App.showScreen('dashboard')">الرئيسية</button>
-                <button onclick="App.showScreen('upload')">رفع البيانات</button>
-            </nav>
-        </aside>
+<canvas id="particle-canvas" class="particle-canvas"></canvas>
 
-        <main class="main-content">
-            <div id="screen-dashboard" class="screen">
-                <div class="card"><h1>لوحة التحكم</h1><p>الأرقام ستظهر هنا بعد الرفع.</p></div>
-            </div>
+<!-- Header Component -->
+<div id="header-placeholder"></div>
 
-            <div id="screen-upload" class="screen" style="display:none;">
-                <div class="card">
-                    <h1>ارفع ملف الـ CSV</h1>
-                    <input type="file" id="fileInput">
-                </div>
-            </div>
-        </main>
-    </div>
+<!-- Navigation Component -->
+<div id="nav-placeholder"></div>
 
-    <script src="app.js"></script>
+<!-- SCREEN 1: LOGIN -->
+<div class="screen" id="s-login">
+  <!-- محتوى شاشة الدخول -->
+</div>
+
+<!-- SCREEN 2: UPLOAD -->
+<div class="screen has-nav" id="s-upload">
+  <!-- محتوى شاشة الرفع -->
+</div>
+
+<!-- باقي الشاشات هنا... -->
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="js/state.js"></script>
+<script src="js/db.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/router.js"></script>
+<script src="js/screens.js"></script>
+<script src="js/whatif.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Component Loader -->
+<script>
+  // تحميل المكونات
+  async function loadComponents() {
+    try {
+      const header = await fetch('components/header.html');
+      const nav = await fetch('components/nav.html');
+      
+      document.getElementById('header-placeholder').innerHTML = await header.text();
+      document.getElementById('nav-placeholder').innerHTML = await nav.text();
+      
+      // إعادة تطبيق اللغة والثيم بعد تحميل المكونات
+      UI.applyLang(State.get('lang'));
+      UI.applyTheme(State.get('theme'));
+    } catch (error) {
+      console.error('Failed to load components:', error);
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', loadComponents);
+</script>
+
 </body>
 </html>
