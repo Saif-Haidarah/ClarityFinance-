@@ -1,0 +1,29 @@
+:root {
+    --primary: #1a3a3a;
+    --accent: #d4af37;
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Tajawal', sans-serif;
+    background: var(--bg);
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: var(--primary);
+    color: white;
+    padding: 20px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
